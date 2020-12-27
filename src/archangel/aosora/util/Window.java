@@ -81,6 +81,13 @@ public class Window {
 				glfwSetWindowShouldClose(window, true); // We will detect this in the rendering loop
 		});
 		
+		// Setup a cursor callback. It will be called every time the mouse is moved.
+		glfwSetCursorPosCallback(glfwWindow, MouseListener::mousePosCallback);
+		// Setup a mouse button callback. It will be called every time the mouse is clicked.
+		glfwSetMouseButtonCallback(glfwWindow, MouseListener::mouseButtonCallback);
+		// Setup a mouse scroll callback. It will be called every time the mousewheel is moved.
+		glfwSetScrollCallback(glfwWindow, MouseListener::mouseScrollCallback);
+		
 		// Get the thread stack and push a new frame
 		try (MemoryStack stack = stackPush()) {
 			IntBuffer pWidth = stack.mallocInt(1); // int*
