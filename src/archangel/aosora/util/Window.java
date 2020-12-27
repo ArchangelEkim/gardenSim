@@ -76,10 +76,7 @@ public class Window {
 		}
 		
 		// Setup a key callback. It will be called every time a key is pressed, repeated or released.
-		glfwSetKeyCallback(glfwWindow, (window, key, scancode, action, mods) -> {
-			if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE)
-				glfwSetWindowShouldClose(window, true); // We will detect this in the rendering loop
-		});
+		glfwSetKeyCallback(glfwWindow, KeyListener::keyCallback);
 		
 		// Setup a cursor callback. It will be called every time the mouse is moved.
 		glfwSetCursorPosCallback(glfwWindow, MouseListener::mousePosCallback);
